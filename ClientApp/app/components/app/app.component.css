@@ -1,0 +1,9 @@
+.is-completed {
+    text-decoration: line-through;
+    color: #ff0000;
+}
+
+.is-active {
+    text-decoration: 'none';
+    color: #000000;
+}
