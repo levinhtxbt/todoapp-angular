@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="center-block" style="width:500px;">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="text-center">TodoApp</h2>
+          </div>
+          
+          <div class="panel-body">
+            <form #frmTodo="ngForm" novalidate>
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" placeholder="Enter your todo" name="todo" [(ngModel)]="todo" #todoInput required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <button class="btn btn-success" [disabled]="!frmTodo.valid" (click)="addTodo(todoInput.value)">Add Todo</button>
+                </div>
+              </div>
+            </form>
+            <hr>
+
+            <p>List to do</p>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let todo of todos" (click)="toggleTodo(todo.id)">
+                <span [ngClass]="todo.isCompleted ? 'is-completed' : 'is-active'">{{ todo.title }}</span>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="panel-footer">
+            <ul class="nav nav-pills">
+              <li role="presentation" [ngClass]="visibleState === 'SHOW_ALL'? 'active': ''"><a href="#" (click)="filterTodo('SHOW_ALL')">All</a></li>
+              <li role="presentation" [ngClass]="visibleState === 'SHOW_ACTIVE'? 'active': ''"><a href="#" (click)="filterTodo('SHOW_ACTIVE')">Active</a></li>
+              <li role="presentation" [ngClass]="visibleState === 'SHOW_COMPLETED'? 'active': ''"><a href="#" (click)="filterTodo('SHOW_COMPLETED')">Completed</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
